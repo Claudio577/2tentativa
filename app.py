@@ -1,6 +1,29 @@
 import streamlit as st
 from config import get_llm
 
+import os
+import inspect
+
+st.title("🔍 DEBUG — Qual app.py o Streamlit está executando?")
+
+# 1 — Mostra caminho do arquivo real
+st.subheader("📌 Caminho do arquivo em execução:")
+st.code(os.path.abspath(__file__))
+
+# 2 — Mostra conteúdo do arquivo
+st.subheader("📌 Conteúdo REAL do arquivo em execução:")
+with open(__file__, "r") as f:
+    st.code(f.read())
+
+# 3 — Lista todos os .py do projeto
+st.subheader("📌 Arquivos Python detectados no projeto:")
+for root, dirs, files in os.walk("/mount/src"):
+    for file in files:
+        if file.endswith(".py"):
+            st.write(os.path.join(root, file))
+
+st.info("Envie a screenshot desse resultado aqui.")
+
 st.set_page_config(page_title="Agente Executivo", page_icon="💼")
 
 st.title("💼 Agente Executivo — LangChain + Streamlit")
