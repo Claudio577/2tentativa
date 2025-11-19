@@ -27,4 +27,3 @@ if st.button("Enviar"):
 
 st.markdown("---")
 st.caption("Aplicação construída com Streamlit + OpenAI")
-a com Streamlit + OpenAI")
