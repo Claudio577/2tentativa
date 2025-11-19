@@ -1,5 +1,10 @@
 import streamlit as st
 from agents.agente_executivo import criar_agente_executivo
+import streamlit as st
+import os
+
+st.write("REPO:", os.getenv("STREAMLIT_SOURCE_URL"))
+st.write("APP FILE:", os.path.abspath(__file__))
 
 st.set_page_config(page_title="Agente Executivo", page_icon="💼")
 
