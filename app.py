@@ -1,19 +1,25 @@
 import streamlit as st
-from agents.agente_executivo import criar_agente_executivo
-import importlib.metadata as md
+from config import get_llm
 
-packages = md.distributions()
-installed = sorted([f"{p.metadata['Name']}=={p.version}" for p in packages if 'Name' in p.metadata])
-
-st.write("📦 PACOTES INSTALADOS:")
-st.code("\n".join(installed))
-
-# ⚠️ OBRIGATÓRIO: nada pode vir antes desta linha
 st.set_page_config(page_title="Agente Executivo", page_icon="💼")
 
-st.title("💼 Agente Executivo — Streamlit + OpenAI")
+st.title("💼 Agente Executivo — LangChain + Streamlit")
 
 st.write("Envie uma pergunta para o agente executivo baseado em GPT-4o-mini:")
+
+# cria agente simples
+def criar_agente_executivo():
+    llm = get_llm()
+
+    def agente(user_input):
+        messages = [
+            {"role": "system", "content": "Você é um executivo sênior especialista em estratégia corporativa."},
+            {"role": "user", "content": user_input}
+        ]
+        return llm(messages)
+
+    return agente
+
 
 user_input = st.text_area("Sua mensagem:", height=120)
 
