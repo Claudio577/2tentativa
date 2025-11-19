@@ -1,14 +1,10 @@
 import streamlit as st
 from agents.agente_executivo import criar_agente_executivo
-import streamlit as st
-import os
 
-st.write("REPO:", os.getenv("STREAMLIT_SOURCE_URL"))
-st.write("APP FILE:", os.path.abspath(__file__))
-
+# ⚠️ OBRIGATÓRIO: nada pode vir antes desta linha
 st.set_page_config(page_title="Agente Executivo", page_icon="💼")
 
-st.title("💼 Agente Executivo — LangChain + Streamlit")
+st.title("💼 Agente Executivo — Streamlit + OpenAI")
 
 st.write("Envie uma pergunta para o agente executivo baseado em GPT-4o-mini:")
 
@@ -31,3 +27,4 @@ if st.button("Enviar"):
 
 st.markdown("---")
 st.caption("Aplicação construída com Streamlit + OpenAI")
+a com Streamlit + OpenAI")
