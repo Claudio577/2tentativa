@@ -1,5 +1,10 @@
 import streamlit as st
 from agents.agente_executivo import criar_agente_executivo
+import pkg_resources
+import streamlit as st
+
+st.write("📦 PACOTES INSTALADOS:")
+st.code("\n".join(sorted([d.project_name + '==' + d.version for d in pkg_resources.working_set])))
 
 # ⚠️ OBRIGATÓRIO: nada pode vir antes desta linha
 st.set_page_config(page_title="Agente Executivo", page_icon="💼")
