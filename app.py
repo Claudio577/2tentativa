@@ -1,9 +1,12 @@
 import streamlit as st
 from agents.agente_executivo import criar_agente_executivo
-import pkg_resources
+import importlib.metadata as md
+
+packages = md.distributions()
+installed = sorted([f"{p.metadata['Name']}=={p.version}" for p in packages if 'Name' in p.metadata])
 
 st.write("📦 PACOTES INSTALADOS:")
-st.code("\n".join(sorted([d.project_name + '==' + d.version for d in pkg_resources.working_set])))
+st.code("\n".join(installed))
 
 # ⚠️ OBRIGATÓRIO: nada pode vir antes desta linha
 st.set_page_config(page_title="Agente Executivo", page_icon="💼")
